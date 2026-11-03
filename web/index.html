@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Pigeon Notes</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Writing -->
+    <section id="writer" class="sheet" hidden>
+        <h1 id="writeHeading"></h1>
+        <div id="styles" class="styles"></div>
+        <textarea id="text" spellcheck="true" maxlength="1000"></textarea>
+        <div class="row">
+            <label id="signRow" class="sign"><input id="signed" type="checkbox" /> <span id="signLabel"></span></label>
+            <span id="counter" class="counter"></span>
+        </div>
+        <div class="row buttons">
+            <button id="cancel" type="button" class="quiet"></button>
+            <button id="place" type="button"></button>
+        </div>
+    </section>
+
+    <!-- Reading -->
+    <section id="reader" class="sheet" hidden>
+        <div id="readText" class="handwriting"></div>
+        <div class="row signature">
+            <span id="readName"></span>
+            <span id="readDate"></span>
+        </div>
+        <div class="row buttons">
+            <button id="remove" type="button" class="danger" hidden></button>
+            <button id="close" type="button"></button>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+/* Pigeon Notes: the notepad and the note being read. Sizes are in vh so they look the same at any resolution.
+   The handwriting uses fonts that come with Windows, which FiveM runs on, so no font files are shipped. */
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.sheet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-1deg);
+    width: 46vh;
+    padding: 3.2vh 3.4vh 2.6vh;
+    background: var(--page, #f6f1e4);
+    color: #1d2a44;
+    border-radius: 0.4vh;
+    box-shadow: 0 1.6vh 4vh rgba(0, 0, 0, 0.55);
+}
+
+.sheet[hidden] { display: none; }
+
+h1 {
+    margin: 0 0 1.6vh;
+    font-size: 2.2vh;
+    font-weight: 600;
+    color: #3a3a3a;
+}
+
+.styles {
+    display: flex;
+    gap: 0.8vh;
+    margin-bottom: 1.4vh;
+}
+
+.styles button {
+    padding: 0.6vh 1.4vh;
+    font-size: 1.4vh;
+    border: 0.15vh solid rgba(0, 0, 0, 0.25);
+    background: var(--swatch);
+    color: #222;
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.styles button.chosen { border-color: #ff9000; box-shadow: 0 0 0 0.2vh #ff9000; }
+
+textarea,
+.handwriting {
+    width: 100%;
+    min-height: 26vh;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    resize: none;
+    /* Ruled lines under each line of writing, which scroll with the text. */
+    background: repeating-linear-gradient(transparent, transparent 3.05vh, rgba(70, 110, 170, 0.22) 3.05vh, rgba(70, 110, 170, 0.22) 3.25vh);
+    background-attachment: local;
+    color: #1d2a44;
+    font-family: 'Segoe Print', 'Segoe Script', 'Comic Sans MS', cursive;
+    font-size: 2vh;
+    line-height: 3.25vh;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.handwriting { max-height: 52vh; overflow-y: auto; }
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.2vh;
+    font-size: 1.5vh;
+    color: #555;
+}
+
+.sign { display: flex; align-items: center; gap: 0.6vh; cursor: pointer; }
+.sign[hidden] { display: none; }
+.counter.over { color: #c0392b; font-weight: 600; }
+
+.signature {
+    font-family: 'Segoe Print', 'Segoe Script', cursive;
+    color: #1d2a44;
+}
+
+.buttons { justify-content: flex-end; gap: 1vh; }
+
+button {
+    padding: 0.9vh 2vh;
+    font-size: 1.5vh;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5vh;
+    background: #ff9000;
+    color: #111;
+    cursor: pointer;
+}
+
+button.quiet { background: rgba(0, 0, 0, 0.08); color: #333; }
+button.danger { background: #c0392b; color: #fff; margin-right: auto; }
+button[hidden] { display: none; }
+button:disabled { opacity: 0.45; cursor: default; }
