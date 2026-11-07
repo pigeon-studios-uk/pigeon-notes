@@ -5,7 +5,7 @@ lua54 'yes'
 name 'pigeon-notes'
 author 'Pigeon Studios'
 description 'Write notes and leave them on walls, tables and floors for other players to find and read.'
-version '1.0.0'
+version '1.1.0'
 repository 'https://github.com/pigeon-studios-uk/pigeon-notes'
 
 -- Pigeon Studios version registry entry, read by server/version_check.lua.
