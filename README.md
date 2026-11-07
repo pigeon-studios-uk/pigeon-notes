@@ -67,7 +67,7 @@ Notes stay where they're put through restarts, without needing a database, until
 - **Taking down.** The author and staff, staff only, or anyone, as you choose.
 - **Moderation.** Every note in the console, and in Discord if you set a webhook.
 - **Inventory items.** Open the notepad from a notepad item in ox_inventory, QBCore or ESX.
-- **Translatable.** Every message is in `locales/`.
+- **23 languages.** Every message is in `locales/`, and it follows ox_lib's language setting.
 - **Standalone.** No framework or database needed.
 
 ## How players use it
@@ -131,7 +131,7 @@ All settings are in `configuration/config.lua`, each with a comment explaining i
 
 | Setting | Default | What it does |
 |---|---|---|
-| `Config.Locale` | `'en'` | Language file from `locales/` to use |
+| `Config.Locale` | `'auto'` | Language: `'auto'` follows ox_lib's language, or a code from `locales/` such as `'de'` |
 | `Config.Command` | `'note'` | The command that opens the notepad |
 | `Config.Key` | `''` | A key for it. `''` leaves it unbound until a player picks one in GTA's key bindings |
 | `Config.Styles` | paper, post-it | What players can write on: `label`, `model` (the prop), `maxLength` (characters) and `colour` (the page when read) |
@@ -215,7 +215,19 @@ exports['pigeon-notes']:RemoveNote(id)
 
 ## Localisation
 
-Change `Config.Locale` to use another language from `locales/`. To add a language, copy `locales/en.lua` to a new file named with the language's two-letter code (for example `de.lua`), change `Locales.en` to match (`Locales.de`) and translate the text in quotes. Keep words in `{curly brackets}` and the `~INPUT_...~` codes as they are. The notepad's own buttons are in the same file. We'd love it if you shared a translation back; see [Contributing](#contributing).
+Pigeon Notes comes in 23 languages: `en` English, `cs` Czech, `da` Danish, `de` German, `es` Spanish, `et` Estonian, `fi` Finnish, `fr` French, `hr` Croatian, `hu` Hungarian, `id` Indonesian, `it` Italian, `nl` Dutch, `no` Norwegian, `pl` Polish, `pt` Portuguese, `pt-br` Brazilian Portuguese, `ro` Romanian, `sl` Slovenian, `sv` Swedish, `tr` Turkish, `zh-cn` Simplified Chinese and `zh-tw` Traditional Chinese. They're the languages ox_lib ships, so your server may already have one set.
+
+With `Config.Locale = 'auto'` (the default), it uses ox_lib's language, so one line in `server.cfg` sets it for this and every other resource that follows ox_lib:
+
+```cfg
+setr ox:locale "de"
+```
+
+Use `setr`, not `set`, so players' games get it too. Without it, or for a language that isn't in `locales/`, the text is English. To choose a language for this resource only, set `Config.Locale` to its code, such as `'fr'` or `'pt-br'`.
+
+Chinese text can show as blank in GTA's own text, such as its notifications and help messages, because GTA only loads its Chinese font when the game itself is set to Chinese. ox_lib's notifications show every language.
+
+Every file was checked for missing text and placeholders, but not every translation has been read by a native speaker yet. If something reads wrong, please send a fix; see [Contributing](#contributing). To add a language, copy `locales/en.lua` to a new file named with the language's code (such as `ja.lua`), change `Locales.en` at the top to match (`Locales.ja`), and translate the text in quotes. Keep words in `{curly brackets}` and the `~INPUT_...~` codes as they are. The notepad's own buttons are in the same file.
 
 ## How it works
 

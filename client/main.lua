@@ -16,7 +16,9 @@ local SPIN_STEP = 15.0                     -- degrees per scroll on floors
 local CONTROLS = { place = 38, cancel = 177, spinUp = 15, spinDown = 14 }   -- E, Backspace, scroll
 local PLACING_BLOCKED = { 24, 25, 37, 44, 140, 141, 142, 143, 257, 263, 264, 14, 15, 16, 17 }
 
-local strings = Locales[Config.Locale] or Locales.en
+-- 'auto' follows ox_lib's language (the ox:locale convar), and English when that isn't set.
+local locale = Config.Locale == 'auto' and GetConvar('ox:locale', 'en') or Config.Locale
+local strings = Locales[locale] or Locales.en
 
 local notes = {}           -- [id] = note, from the server
 local props = {}           -- [id] = the prop made for it in this game
